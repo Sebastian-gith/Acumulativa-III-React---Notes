@@ -1,20 +1,36 @@
-import { NotaPersonal } from "./NotaPersonal";
-import { useState, useRef } from "react"; //useState y useRef: Hooks de React para manejar el estado y referencias.
-import { v4 as uuid } from "uuid";
+import { NotaPersonal } from "./NotaPersonal"; /**
+Aqui importo la funcion que sera la encargada de listar las notas
+dependiendo de su estado de importante si el importante
+es igual a true se mostraba la nota en color rojo y la 
+nota no importante se imprimira con el color como medio amarillo */
+import { useState, useRef } from "react"; /**
+Aqui Use Ganchos para poder capturar o modificar un x elemento */
+import { v4 as uuid } from "uuid"; /**
+Aqui simplemente para ahorrarme el hecho de 
+crear una llave primaria por ejemplo en versiones anteriores
+de esta misma acumulativa yo use el titulo
+como identificador primario con eso incluso
+llego a funcionar todo, el borrar mas que nada
+es una de las funciones principales de este
+pequeño proyecto por lo cual para ahorrarme esos 
+problemas mejor uso la biblioteca uuid donde para borrar
+una nota filtro por id entonces por cada nota que yo ingrese 
+se recibe una id la cual sera el identificador unico de cada nota 
+lo cual facilita mucho mas el proyecto mas que nada podria estar
+hablando mucho de este proyecto pero creo 
+que la complejidad no era tan alta como pense. */
 
-//Definición del Componente MyPlaylist: UNA FUNCION GRANDE QUE TIENE TODOS LOS CRUD
-// Agregar , Listar , Actulizar , Borrar
 export function MisNotas() {
     const tituloRef = useRef();
     const descripcionRef = useRef();
     const importanteRef = useRef();
-    const [mensaje, setMensaje] = useState(""); //useSatate = Valor Inicial
+    const [mensaje, setMensaje] = useState(""); 
 
     function AgregarNota() {
-        console.log('Presionando boton agregar'); //Captura de la funcion
+        console.log('Presionando boton agregar'); 
         const titulo = tituloRef.current.value;
         const descripcion = descripcionRef.current.value; 
-        const importante = importanteRef.current.checked; //Al ser un checked siempre devolvera solo TRUE o FALSE = (BOOLEANOS)
+        const importante = importanteRef.current.checked; 
 
         if (descripcion === "") {
 
@@ -30,10 +46,9 @@ export function MisNotas() {
                 descripcion: descripcion,
                 importante: importante
             }
-            const nuevaNota = [...notaPredeterminada, nota]; //Hace una copia de defaultPlaylist
-            // La Lista Original y le agrega EL DOCUMENTO = song
-            cambiarNota(nuevaNota); //Y Se lo agrega a la lista Original
-            alert('Nota Agregada'); //Mensaje de alerta de Se agrego cancion
+            const nuevaNota = [...notaPredeterminada, nota];
+            cambiarNota(nuevaNota); 
+            alert('Nota Agregada'); 
         }
 
         tituloRef.current.value = '';
@@ -43,7 +58,7 @@ export function MisNotas() {
 
     function EliminarNota(id) {
         console.log("Presionando boton de eliminar");
-        const nuevaNota_2 = notaPredeterminada.filter(i => i.id !== id) //Estrictamente contrario
+        const nuevaNota_2 = notaPredeterminada.filter(i => i.id !== id) 
         cambiarNota(nuevaNota_2)
         alert("Nota Eliminada")
     }
@@ -69,10 +84,9 @@ export function MisNotas() {
             </div>
             <span className="white centro"> {mensaje} </span>
             <div className="box">
-                { // Abrimos llaves para iniciar logica de programacion
-                    // IMPORTANTE PORQUE HACE QUE LAS COSAS SE MUESTREN POR PANTALLA
+                { 
                     notaPredeterminada.map(function (i) {
-                        return <NotaPersonal key={i.id} nota={i} EliminarNota={EliminarNota}/>
+                    return <NotaPersonal key={i.id} nota={i} EliminarNota={EliminarNota}/>
                     })
                 }
             </div>
