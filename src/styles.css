@@ -48,3 +48,17 @@ body{
 .pdf{
     width: 480px;
 }
+
+i{
+    font-size: 25px;
+}
+
+.patata{
+    justify-content: space-between;
+}
+
+.centro{
+    display: flex;
+    justify-content: center;
+    margin-left: -480px;
+}
