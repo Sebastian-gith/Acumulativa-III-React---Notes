@@ -33,7 +33,7 @@ export function MisNotas() {
             const nuevaNota = [...notaPredeterminada, nota]; //Hace una copia de defaultPlaylist
             // La Lista Original y le agrega EL DOCUMENTO = song
             cambiarNota(nuevaNota); //Y Se lo agrega a la lista Original
-            alert('Se agrego nota'); //Mensaje de alerta de Se agrego cancion
+            alert('Nota Agregada'); //Mensaje de alerta de Se agrego cancion
         }
 
         tituloRef.current.value = '';
@@ -45,14 +45,14 @@ export function MisNotas() {
         console.log("Presionando boton de eliminar");
         const nuevaNota_2 = notaPredeterminada.filter(i => i.id !== id) //Estrictamente contrario
         cambiarNota(nuevaNota_2)
-        alert("Se a eliminado la nota")
+        alert("Nota Eliminada")
     }
 
     const [notaPredeterminada, cambiarNota] = useState([
-        { id: uuid(), titulo: "Rick and Morty" , descripcion: 'Serie de Ciencia ficcion', importante: false },
-        { id: uuid(), titulo: "Hora de aventura" , descripcion: 'Serie de un chico y un perro', importante: true },
-        { id: uuid(), titulo: "Breaking Bad" , descripcion: 'Historia basada en la historia de un heroe villano', importante: false },
-        { id: uuid(), titulo: "Un Show Mas" , descripcion: 'show de un pajaro y un mapache', importante: false }
+        { id: uuid(), titulo: "Subir las notas" , descripcion: 'Antes de fin de semestre', importante: false },
+        { id: uuid(), titulo: "Regar las plantas" , descripcion: 'Dia por medio', importante: true },
+        { id: uuid(), titulo: "Renovar Tarjeta" , descripcion: 'Antes de fin de mes que se este por vencer', importante: false },
+        { id: uuid(), titulo: "Cambiar Aceite Auto" , descripcion: 'Preguntar a mi viejo donde lo llevo', importante: false }
     ]);
 
     return (
